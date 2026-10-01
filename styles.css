@@ -72,12 +72,19 @@ h1 {
     "peri audio"
     "desk desk";
   gap: 0.75rem;
+  align-items: stretch;
 }
 .rig { grid-area: rig; }
 .peri { grid-area: peri; }
 .audio { grid-area: audio; }
 .desk { grid-area: desk; }
 .gear article { padding: 1rem 1.05rem 0.95rem; }
+.peri, .audio {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.peri ul, .audio ul { flex: 1; align-content: space-evenly; }
 .gear h2 { font-size: 1rem; text-align: center; margin-bottom: 0.7rem; }
 .gear ul { list-style: none; display: grid; gap: 0.4rem 1.2rem; }
 .rig ul { grid-template-columns: 1fr 1fr; }
