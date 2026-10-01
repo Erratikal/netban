@@ -28,40 +28,28 @@ body {
   border: 1px solid var(--line);
   border-radius: 16px;
 }
-.hero { padding: 1.35rem 1.4rem 1.15rem; text-align: center; }
+.hero, .code-card { padding: 1.25rem 1.3rem; text-align: center; }
 h1 {
   font-size: clamp(2.6rem, 6vw, 4rem);
   line-height: 0.92; letter-spacing: -0.045em; margin: 0.3rem 0 0.7rem;
 }
-.bio { color: var(--muted); font-size: 1.02rem; max-width: 38rem; margin: 0 auto; }
-.social-links { display: flex; justify-content: center; gap: 0.5rem; margin-top: 0.9rem; }
-.social-links a, .code-btn {
+.bio, .code-card p { color: var(--muted); font-size: 0.98rem; }
+.bio { max-width: 38rem; margin: 0 auto; }
+.social-links, .code-actions { display: flex; justify-content: center; gap: 0.5rem; }
+.social-links { margin-top: 0.9rem; }
+.social-links a, .code-btn, .copy-btn {
   font-family: "JetBrains Mono", monospace;
   text-decoration: none; border-radius: 8px; font-size: 0.8rem; font-weight: 600;
 }
 .social-links a { color: var(--text); border: 1px solid var(--line); padding: 0.42rem 0.75rem; }
 .social-links a:hover { border-color: var(--accent); }
-.code-card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 0.85rem 1.1rem;
-}
-.code-name {
-  font-family: "JetBrains Mono", monospace;
-  font-size: 1.35rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  margin-top: 0.15rem;
-}
-.code-btn {
-  background: var(--accent);
-  color: #1a0b2e;
-  padding: 0.7rem 1rem;
-  white-space: nowrap;
-}
-.code-btn:hover { filter: brightness(1.08); }
+.code-card h2 { font-size: 1.25rem; margin-bottom: 0.35rem; }
+.code-card p { margin-bottom: 0.85rem; }
+.code-card strong { color: var(--text); font-family: "JetBrains Mono", monospace; letter-spacing: 0.04em; }
+.code-btn, .copy-btn { padding: 0.65rem 0.9rem; cursor: pointer; }
+.code-btn { background: var(--accent); color: #1a0b2e; }
+.copy-btn { background: transparent; color: var(--text); border: 1px solid var(--line); }
+.copy-btn.is-copied { background: var(--accent); color: #1a0b2e; border-color: var(--accent); }
 .card { padding: 1rem 1.05rem 0.95rem; }
 .card h2 { font-size: 1rem; text-align: center; margin-bottom: 0.7rem; }
 .card ul { list-style: none; display: grid; gap: 0.4rem 1.2rem; }
@@ -90,5 +78,4 @@ footer {
 @media (max-width: 700px) {
   body { justify-content: flex-start; }
   .rig ul, .desk ul, .split { grid-template-columns: 1fr; }
-  .code-card { flex-direction: column; text-align: center; }
 }
