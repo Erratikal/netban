@@ -19,11 +19,6 @@ body {
   justify-content: center;
   padding: 1.5rem 1.1rem;
 }
-.skip-link {
-  position: absolute; left: 1rem; top: -40px;
-  background: var(--accent); color: #1a0b2e; padding: 0.4rem 0.7rem; border-radius: 8px;
-}
-.skip-link:focus { top: 1rem; }
 .page { width: min(920px, 100%); display: grid; gap: 0.75rem; }
 .eyebrow {
   font-family: "JetBrains Mono", monospace;
@@ -69,8 +64,8 @@ h1 {
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
     "rig rig"
-    "peri audio"
-    "desk desk";
+    "desk desk"
+    "peri audio";
   gap: 0.75rem;
   align-items: stretch;
 }
@@ -79,11 +74,7 @@ h1 {
 .audio { grid-area: audio; }
 .desk { grid-area: desk; }
 .gear article { padding: 1rem 1.05rem 0.95rem; }
-.peri, .audio {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
+.peri, .audio { display: flex; flex-direction: column; height: 100%; }
 .peri ul, .audio ul { flex: 1; align-content: space-evenly; }
 .gear h2 { font-size: 1rem; text-align: center; margin-bottom: 0.7rem; }
 .gear ul { list-style: none; display: grid; gap: 0.4rem 1.2rem; }
@@ -110,7 +101,7 @@ footer {
   body { justify-content: flex-start; }
   .gear {
     grid-template-columns: 1fr;
-    grid-template-areas: "rig" "peri" "audio" "desk";
+    grid-template-areas: "rig" "desk" "peri" "audio";
   }
   .rig ul, .desk ul { grid-template-columns: 1fr; }
   .code-bar { flex-direction: column; gap: 0.6rem; }
