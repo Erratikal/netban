@@ -1,6 +1,5 @@
 :root {
   --bg: #100818;
-  --card: #1b1028;
   --line: #3a2458;
   --text: #f6f1ff;
   --muted: #c4b5d8;
@@ -8,7 +7,7 @@
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
-  font-family: Outfit, sans-serif;
+  font-family: Outfit, "Noto Sans JP", sans-serif;
   background:
     radial-gradient(800px 380px at 50% -8%, rgba(124, 58, 237, 0.32), transparent 62%),
     #100818;
@@ -25,17 +24,10 @@ body {
   background: var(--accent); color: #1a0b2e; padding: 0.4rem 0.7rem; border-radius: 8px;
 }
 .skip-link:focus { top: 1rem; }
-.page {
-  width: min(920px, 100%);
-  display: grid;
-  gap: 0.75rem;
-}
+.page { width: min(920px, 100%); display: grid; gap: 0.75rem; }
 .eyebrow {
   font-family: "JetBrains Mono", monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--accent);
+  font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent);
 }
 .hero, .code-bar, .gear article {
   background: rgba(27, 16, 40, 0.94);
@@ -45,28 +37,19 @@ body {
 .hero { padding: 1.35rem 1.4rem 1.15rem; text-align: center; }
 h1 {
   font-size: clamp(2.6rem, 6vw, 4rem);
-  line-height: 0.92;
-  letter-spacing: -0.045em;
-  margin: 0.3rem 0 0.7rem;
+  line-height: 0.92; letter-spacing: -0.045em; margin: 0.3rem 0 0.7rem;
 }
 .bio { color: var(--muted); font-size: 1.02rem; max-width: 38rem; margin: 0 auto; }
 .social-links { display: flex; justify-content: center; gap: 0.5rem; margin-top: 0.9rem; }
 .social-links a, .code-btn, .copy-btn {
   font-family: "JetBrains Mono", monospace;
-  text-decoration: none;
-  border-radius: 8px;
-  font-size: 0.8rem;
-  font-weight: 600;
+  text-decoration: none; border-radius: 8px; font-size: 0.8rem; font-weight: 600;
 }
 .social-links a { color: var(--text); border: 1px solid var(--line); padding: 0.42rem 0.75rem; }
 .social-links a:hover { border-color: var(--accent); }
 .code-bar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1.25rem;
-  text-align: center;
-  padding: 0.85rem 1.1rem;
+  display: flex; justify-content: center; align-items: center; gap: 1.25rem;
+  text-align: center; padding: 0.85rem 1.1rem;
   background: linear-gradient(90deg, rgba(124, 58, 237, 0.2), rgba(27, 16, 40, 0.94) 50%, rgba(124, 58, 237, 0.2));
 }
 .code-bar p:last-child { color: var(--muted); margin-top: 0.15rem; }
@@ -84,35 +67,31 @@ h1 {
 .gear {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "rig rig"
+    "peri audio"
+    "desk desk";
   gap: 0.75rem;
-  align-items: start;
 }
+.rig { grid-area: rig; }
+.peri { grid-area: peri; }
+.audio { grid-area: audio; }
+.desk { grid-area: desk; }
 .gear article { padding: 1rem 1.05rem 0.95rem; }
-.rig, .desk { grid-column: 1 / -1; }
 .gear h2 { font-size: 1rem; text-align: center; margin-bottom: 0.7rem; }
 .gear ul { list-style: none; display: grid; gap: 0.4rem 1.2rem; }
 .rig ul { grid-template-columns: 1fr 1fr; }
 .desk ul { grid-template-columns: repeat(5, minmax(0, 1fr)); }
-.gear li {
-  color: var(--muted);
-  font-size: 0.92rem;
-  text-align: center;
-}
+.gear li { color: var(--muted); font-size: 0.92rem; text-align: center; }
 .gear li span {
   display: block;
   font-family: "JetBrains Mono", monospace;
-  font-size: 0.64rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--accent);
+  font-size: 0.64rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent);
   margin-bottom: 0.08rem;
 }
 footer {
-  margin-top: 0.7rem;
-  color: #8b7aa3;
-  font-family: "JetBrains Mono", monospace;
-  font-size: 0.72rem;
-  text-align: center;
+  margin-top: 0.7rem; color: #8b7aa3;
+  font-family: "JetBrains Mono", monospace; font-size: 0.72rem; text-align: center;
 }
 .toast {
   position: fixed; bottom: 1rem; left: 50%; transform: translate(-50%, 12px);
@@ -122,6 +101,10 @@ footer {
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
 @media (max-width: 700px) {
   body { justify-content: flex-start; }
-  .gear, .rig ul, .desk ul { grid-template-columns: 1fr; }
+  .gear {
+    grid-template-columns: 1fr;
+    grid-template-areas: "rig" "peri" "audio" "desk";
+  }
+  .rig ul, .desk ul { grid-template-columns: 1fr; }
   .code-bar { flex-direction: column; gap: 0.6rem; }
 }
