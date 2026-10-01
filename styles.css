@@ -65,6 +65,15 @@ h1 {
   font-size: 0.64rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent);
   margin-bottom: 0.08rem;
 }
+.news h2 { margin-bottom: 0.15rem; }
+.news > p { text-align: center; color: var(--muted); font-size: 0.85rem; margin-bottom: 0.75rem; }
+.news ul { display: flex; flex-direction: column; gap: 0.65rem; }
+.news li { text-align: left; }
+.news a { color: var(--text); text-decoration: none; }
+.news a:hover { color: var(--accent); }
+.news li span {
+  text-transform: none; letter-spacing: 0; font-size: 0.7rem; margin-top: 0.12rem;
+}
 footer {
   margin-top: 0.7rem; color: #8b7aa3;
   font-family: "JetBrains Mono", monospace; font-size: 0.72rem; text-align: center;
