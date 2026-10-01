@@ -81,21 +81,21 @@ function when(iso) {
 async function oneFeed(source, url) {
   const res = await fetch("https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(url));
   const data = await res.json();
-  const item = (data.items || [])[0];
-  if (!item) return null;
-  return { source, title: item.title, link: item.link, date: item.pubDate };
+  return (data.items || []).slice(0, 2).map((item) => ({
+    source, title: item.title, link: item.link, date: item.pubDate
+  }));
 }
 
 async function loadNews() {
   if (!newsList) return;
-  const key = "netban-news";
+  const key = "netban-news-v2";
   const cached = sessionStorage.getItem(key);
   if (cached) {
     const saved = JSON.parse(cached);
     if (Date.now() - saved.at < 30 * 60 * 1000) return render(saved.items);
   }
-  const results = await Promise.all(feeds.map(([source, url]) => oneFeed(source, url).catch(() => null)));
-  const items = results.filter(Boolean).sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 8);
+  const results = await Promise.all(feeds.map(([source, url]) => oneFeed(source, url).catch(() => [])));
+  const items = results.flat().filter((item) => item.title).sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 12);
   if (!items.length) {
     newsList.innerHTML = "<li><span>News feed unavailable right now.</span></li>";
     return;
