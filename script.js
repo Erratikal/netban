@@ -48,9 +48,6 @@ const feeds = [
   ["Gamers Nexus", "https://gamersnexus.net/rss.xml"],
   ["igor'sLAB", "https://www.igorslab.de/en/feed/"],
   ["TechSpot", "https://www.techspot.com/backend.xml"],
-  ["ComputerBase", "https://www.computerbase.de/rss/news.xml"],
-  ["PC Games Hardware", "https://www.pcgameshardware.de/feed/"],
-  ["Hardwareluxx", "https://www.hardwareluxx.de/index.php/news.feed?type=rss"],
   ["KitGuru", "https://www.kitguru.net/feed/"],
   ["Hardware Canucks", "https://hardwarecanucks.com/feed/"],
   ["Club386", "https://www.club386.com/feed/"],
@@ -64,8 +61,6 @@ const feeds = [
   ["9to5Google", "https://9to5google.com/feed/"],
   ["Thurrott", "https://www.thurrott.com/feed"],
   ["Neowin", "https://www.neowin.net/news/rss/"],
-  ["Heise", "https://www.heise.de/rss/heise-atom.xml"],
-  ["WinFuture", "https://static.winfuture.de/feeds/WinFuture-News-rss2.0.xml"],
   ["Trusted Reviews", "https://www.trustedreviews.com/feed"]
 ];
 
@@ -88,7 +83,7 @@ async function oneFeed(source, url) {
 
 async function loadNews() {
   if (!newsList) return;
-  const key = "netban-news-v2";
+  const key = "netban-news-v3";
   const cached = sessionStorage.getItem(key);
   if (cached) {
     const saved = JSON.parse(cached);
