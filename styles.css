@@ -5,88 +5,123 @@
   --text: #f6f1ff;
   --muted: #c4b5d8;
   --accent: #c084fc;
-  --accent-deep: #7c3aed;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
   font-family: Outfit, sans-serif;
   background:
-    radial-gradient(900px 420px at 80% -10%, rgba(124, 58, 237, 0.28), transparent 60%),
-    var(--bg);
+    radial-gradient(800px 380px at 50% -8%, rgba(124, 58, 237, 0.32), transparent 62%),
+    #100818;
   color: var(--text);
   min-height: 100vh;
-  padding: 2rem 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1.1rem;
 }
 .skip-link {
   position: absolute; left: 1rem; top: -40px;
   background: var(--accent); color: #1a0b2e; padding: 0.4rem 0.7rem; border-radius: 8px;
 }
 .skip-link:focus { top: 1rem; }
-.page { width: min(980px, 100%); margin: 0 auto; display: grid; gap: 0.9rem; }
+.page {
+  width: min(920px, 100%);
+  display: grid;
+  gap: 0.75rem;
+}
 .eyebrow {
   font-family: "JetBrains Mono", monospace;
-  font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
 }
 .hero, .code-bar, .gear article {
-  background: rgba(27, 16, 40, 0.92);
+  background: rgba(27, 16, 40, 0.94);
   border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: 16px;
 }
-.hero { padding: 1.6rem 1.5rem 1.3rem; }
+.hero { padding: 1.35rem 1.4rem 1.15rem; text-align: center; }
 h1 {
-  font-size: clamp(2.8rem, 6vw, 4.4rem);
-  line-height: 0.92; letter-spacing: -0.045em; margin: 0.35rem 0 0.8rem;
+  font-size: clamp(2.6rem, 6vw, 4rem);
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+  margin: 0.3rem 0 0.7rem;
 }
-.bio { color: var(--muted); font-size: 1.05rem; max-width: 40rem; }
-.social-links { display: flex; gap: 0.5rem; margin-top: 1rem; }
+.bio { color: var(--muted); font-size: 1.02rem; max-width: 38rem; margin: 0 auto; }
+.social-links { display: flex; justify-content: center; gap: 0.5rem; margin-top: 0.9rem; }
 .social-links a, .code-btn, .copy-btn {
   font-family: "JetBrains Mono", monospace;
-  text-decoration: none; border-radius: 8px; font-size: 0.82rem; font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
 }
-.social-links a {
-  color: var(--text); border: 1px solid var(--line); padding: 0.45rem 0.8rem;
-}
+.social-links a { color: var(--text); border: 1px solid var(--line); padding: 0.42rem 0.75rem; }
 .social-links a:hover { border-color: var(--accent); }
 .code-bar {
-  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
-  padding: 1rem 1.2rem;
-  background: linear-gradient(90deg, rgba(124, 58, 237, 0.22), rgba(27, 16, 40, 0.92) 42%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.25rem;
+  text-align: center;
+  padding: 0.85rem 1.1rem;
+  background: linear-gradient(90deg, rgba(124, 58, 237, 0.2), rgba(27, 16, 40, 0.94) 50%, rgba(124, 58, 237, 0.2));
 }
-.code-bar p:last-child { color: var(--muted); margin-top: 0.2rem; }
-.code-row { display: flex; gap: 0.45rem; }
+.code-bar p:last-child { color: var(--muted); margin-top: 0.15rem; }
+.code-row { display: flex; gap: 0.4rem; }
 .code-btn {
-  background: var(--accent); color: #1a0b2e; padding: 0.7rem 0.9rem;
-  display: inline-flex; gap: 0.35rem; align-items: center;
+  background: var(--accent); color: #1a0b2e; padding: 0.62rem 0.8rem;
+  display: inline-flex; gap: 0.3rem; align-items: center;
 }
 .code-btn span { font-weight: 800; }
 .copy-btn {
-  background: transparent; color: var(--text); border: 1px solid var(--line); padding: 0.7rem 0.8rem; cursor: pointer;
+  background: transparent; color: var(--text); border: 1px solid var(--line);
+  padding: 0.62rem 0.75rem; cursor: pointer;
 }
 .copy-btn.is-copied { background: var(--accent); color: #1a0b2e; border-color: var(--accent); }
-.gear { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 0.9rem; }
-.gear article { padding: 1.15rem 1.2rem; }
-.desk { grid-column: 1 / -1; }
-.gear h2 { font-size: 1.05rem; margin-bottom: 0.8rem; }
-.gear ul { list-style: none; display: grid; gap: 0.45rem; }
-.desk ul { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.8rem; }
-.gear li { color: var(--muted); font-size: 0.95rem; display: flex; flex-direction: column; gap: 0.1rem; }
-.gear li span {
-  font-family: "JetBrains Mono", monospace;
-  font-size: 0.66rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent);
+.gear {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  align-items: start;
 }
-footer { width: min(980px, 100%); margin: 0.8rem auto 0; color: #8b7aa3; font-family: "JetBrains Mono", monospace; font-size: 0.72rem; }
+.gear article { padding: 1rem 1.05rem 0.95rem; }
+.rig, .desk { grid-column: 1 / -1; }
+.gear h2 { font-size: 1rem; text-align: center; margin-bottom: 0.7rem; }
+.gear ul { list-style: none; display: grid; gap: 0.4rem 1.2rem; }
+.rig ul { grid-template-columns: 1fr 1fr; }
+.desk ul { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.gear li {
+  color: var(--muted);
+  font-size: 0.92rem;
+  text-align: center;
+}
+.gear li span {
+  display: block;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.64rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.08rem;
+}
+footer {
+  margin-top: 0.7rem;
+  color: #8b7aa3;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  text-align: center;
+}
 .toast {
   position: fixed; bottom: 1rem; left: 50%; transform: translate(-50%, 12px);
   background: #241433; border: 1px solid var(--line); color: var(--text);
   padding: 0.5rem 0.8rem; border-radius: 999px; opacity: 0; pointer-events: none;
 }
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
-@media (max-width: 800px) {
-  .gear, .desk ul { grid-template-columns: 1fr 1fr; }
-  .desk { grid-column: auto; }
-  .code-bar { flex-direction: column; align-items: stretch; }
-}
-@media (max-width: 560px) {
-  .gear, .desk ul { grid-template-columns: 1fr; }
-  .code-row { flex-direction: column; }
+@media (max-width: 700px) {
+  body { justify-content: flex-start; }
+  .gear, .rig ul, .desk ul { grid-template-columns: 1fr; }
+  .code-bar { flex-direction: column; gap: 0.6rem; }
 }
