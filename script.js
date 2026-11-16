@@ -1,5 +1,4 @@
 const toast = document.getElementById("toast");
-const newsList = document.getElementById("news-list");
 
 function showToast(message) {
   if (!toast) return;
@@ -42,67 +41,3 @@ document.querySelectorAll("[data-copy]").forEach((button) => {
     }, 1400);
   });
 });
-
-const feeds = [
-  ["TechPowerUp", "https://www.techpowerup.com/rss/news"],
-  ["Gamers Nexus", "https://gamersnexus.net/rss.xml"],
-  ["igor'sLAB", "https://www.igorslab.de/en/feed/"],
-  ["TechSpot", "https://www.techspot.com/backend.xml"],
-  ["KitGuru", "https://www.kitguru.net/feed/"],
-  ["Hardware Canucks", "https://hardwarecanucks.com/feed/"],
-  ["Club386", "https://www.club386.com/feed/"],
-  ["Guru3D", "https://www.guru3d.com/rss.xml"],
-  ["Digital Foundry", "https://www.digitalfoundry.net/feeds/latest"],
-  ["SoundGuys", "https://www.soundguys.com/feed/"],
-  ["Ars Technica", "https://feeds.arstechnica.com/arstechnica/index"],
-  ["GSMArena", "https://www.gsmarena.com/rss-news-reviews.php3"],
-  ["Android Authority", "https://www.androidauthority.com/feed/"],
-  ["Droid-Life", "https://www.droid-life.com/feed/"],
-  ["9to5Google", "https://9to5google.com/feed/"],
-  ["Thurrott", "https://www.thurrott.com/feed"],
-  ["Neowin", "https://www.neowin.net/news/rss/"],
-  ["Trusted Reviews", "https://www.trustedreviews.com/feed"]
-];
-
-function when(iso) {
-  const then = new Date(iso).getTime();
-  if (!then) return "";
-  const hours = Math.round((Date.now() - then) / 36e5);
-  if (hours < 1) return "just now";
-  if (hours < 24) return hours + "h";
-  return Math.round(hours / 24) + "d";
-}
-
-async function oneFeed(source, url) {
-  const res = await fetch("https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(url));
-  const data = await res.json();
-  return (data.items || []).slice(0, 2).map((item) => ({
-    source, title: item.title, link: item.link, date: item.pubDate
-  }));
-}
-
-async function loadNews() {
-  if (!newsList) return;
-  const key = "netban-news-v3";
-  const cached = sessionStorage.getItem(key);
-  if (cached) {
-    const saved = JSON.parse(cached);
-    if (Date.now() - saved.at < 30 * 60 * 1000) return render(saved.items);
-  }
-  const results = await Promise.all(feeds.map(([source, url]) => oneFeed(source, url).catch(() => [])));
-  const items = results.flat().filter((item) => item.title).sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 12);
-  if (!items.length) {
-    newsList.innerHTML = "<li><span>News feed unavailable right now.</span></li>";
-    return;
-  }
-  sessionStorage.setItem(key, JSON.stringify({ at: Date.now(), items }));
-  render(items);
-}
-
-function render(items) {
-  newsList.innerHTML = items.map((item) =>
-    `<li><a href="${item.link}" target="_blank" rel="noopener noreferrer">${item.title}</a><span>${item.source} · ${when(item.date)}</span></li>`
-  ).join("");
-}
-
-loadNews();
