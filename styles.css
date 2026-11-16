@@ -67,12 +67,13 @@ h1 {
 }
 .communities h2 { font-size: 1.25rem; margin-bottom: 0.85rem; }
 .communities ul {
-  list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
   align-items: start;
 }
 .communities li {
   color: var(--muted); font-size: 0.92rem; display: flex; flex-direction: column;
   align-items: center; gap: 0.75rem; text-align: center;
+  border: 1px solid var(--line); border-radius: 12px; padding: 1rem 0.75rem;
 }
 .shop-logo-wrap {
   width: 100%; height: 56px; display: flex; align-items: center; justify-content: center;
