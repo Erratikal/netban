@@ -40,15 +40,15 @@ h1 {
 .social-links a, .code-btn, .copy-btn {
   font-family: "JetBrains Mono", monospace;
   text-decoration: none; border-radius: 8px; font-size: 0.8rem; font-weight: 600;
+  padding: 0.65rem 0.9rem; min-width: 7.5rem; text-align: center;
 }
 .social-links a { color: var(--text); border: 1px solid var(--line); padding: 0.42rem 0.75rem; }
 .social-links a:hover { border-color: var(--accent); }
 .code-card h2 { font-size: 1.25rem; margin-bottom: 0.35rem; }
 .code-card p { margin-bottom: 0.85rem; }
 .code-card strong { color: var(--text); font-family: "JetBrains Mono", monospace; letter-spacing: 0.04em; }
-.code-btn, .copy-btn { padding: 0.65rem 0.9rem; cursor: pointer; }
 .code-btn { background: var(--accent); color: #1a0b2e; }
-.copy-btn { background: transparent; color: var(--text); border: 1px solid var(--line); }
+.copy-btn { background: transparent; color: var(--text); border: 1px solid var(--line); cursor: pointer; }
 .copy-btn.is-copied { background: var(--accent); color: #1a0b2e; border-color: var(--accent); }
 .card { padding: 1rem 1.05rem 0.95rem; }
 .card h2 { font-size: 1rem; text-align: center; margin-bottom: 0.7rem; }
@@ -82,7 +82,7 @@ h1 {
 }
 .shop-role {
   font-family: "JetBrains Mono", monospace;
-  font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent);
+  font-size: 0.58rem; letter-spacing: 0.06em; text-transform: uppercase; color: #8b7aa3;
 }
 .shop-actions { margin-top: 0.1rem; width: 100%; }
 footer {
